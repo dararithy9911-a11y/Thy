@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="km">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Signal Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="container">
+      <a class="logo" href="/">📈 Signal<span>Trading</span> · Admin</a>
+      <button class="btn secondary small hidden" id="logout">ចាកចេញ (Logout)</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Login -->
+    <section class="panel login-box hidden" id="login-view">
+      <h2>ចូលប្រព័ន្ធ Admin</h2>
+      <form id="login-form">
+        <label for="password">ពាក្យសម្ងាត់ (Password)</label>
+        <input type="password" id="password" autocomplete="current-password" required />
+        <div class="actions"><button class="btn" type="submit">ចូល (Login)</button></div>
+        <div class="error" id="login-error"></div>
+      </form>
+    </section>
+
+    <!-- Dashboard -->
+    <section class="hidden" id="admin-view">
+      <div class="panel">
+        <h2 id="form-title">បង្កើត Signal ថ្មី</h2>
+        <form id="signal-form">
+          <input type="hidden" name="id" />
+          <div class="form-grid">
+            <div><label>Pair</label><input name="pair" placeholder="XAUUSD" required /></div>
+            <div><label>Direction</label>
+              <select name="direction"><option>BUY</option><option>SELL</option></select>
+            </div>
+            <div><label>Entry</label><input name="entry" type="number" step="any" required /></div>
+            <div><label>Stop Loss</label><input name="stop_loss" type="number" step="any" required /></div>
+            <div><label>TP 1</label><input name="take_profit_1" type="number" step="any" required /></div>
+            <div><label>TP 2</label><input name="take_profit_2" type="number" step="any" /></div>
+            <div><label>TP 3</label><input name="take_profit_3" type="number" step="any" /></div>
+            <div><label>Status</label>
+              <select name="status">
+                <option value="active">Active</option>
+                <option value="pending">Pending</option>
+                <option value="tp_hit">TP Hit</option>
+                <option value="sl_hit">SL Hit</option>
+                <option value="closed">Closed</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </div>
+            <div><label>លទ្ធផល (Pips)</label><input name="result_pips" type="number" step="any" /></div>
+          </div>
+          <div style="margin-top:12px"><label>កំណត់ចំណាំ (Note)</label><textarea name="note" maxlength="1000"></textarea></div>
+          <div class="actions">
+            <button class="btn" type="submit" id="submit-btn">រក្សាទុក (Save)</button>
+            <button class="btn secondary hidden" type="button" id="cancel-edit">បោះបង់ (Cancel)</button>
+          </div>
+          <div class="error" id="form-error"></div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h2>Signals ទាំងអស់</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>#</th><th>Pair</th><th>Dir</th><th>Entry</th><th>SL</th><th>TP1</th><th>Status</th><th>Pips</th><th>Created</th><th></th></tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/common.js"></script>
+  <script src="/admin.js"></script>
+</body>
+</html>

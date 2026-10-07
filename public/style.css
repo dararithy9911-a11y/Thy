@@ -1,0 +1,95 @@
+:root {
+  --bg: #0b1020;
+  --panel: #131a2e;
+  --panel-2: #1a2340;
+  --border: #26304f;
+  --text: #e6e9f2;
+  --muted: #8b93ad;
+  --accent: #4f8cff;
+  --buy: #16c784;
+  --sell: #ea3943;
+  --warn: #f5a623;
+  --radius: 12px;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Kantumruy Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+}
+a { color: var(--accent); text-decoration: none; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+header.top {
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+  position: sticky; top: 0; z-index: 5;
+}
+header.top .container { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.logo { font-weight: 700; font-size: 1.2rem; color: var(--text); }
+.logo span { color: var(--accent); }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 24px 0; }
+.stat { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+.stat .label { color: var(--muted); font-size: .85rem; }
+.stat .value { font-size: 1.6rem; font-weight: 700; margin-top: 4px; }
+
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.chip {
+  border: 1px solid var(--border); background: var(--panel); color: var(--text);
+  padding: 6px 14px; border-radius: 999px; cursor: pointer; font: inherit; font-size: .9rem;
+}
+.chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; padding-bottom: 40px; }
+.card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+.card-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.pair { font-size: 1.25rem; font-weight: 700; }
+.dir { font-weight: 700; padding: 2px 10px; border-radius: 6px; font-size: .85rem; }
+.dir.BUY { background: rgba(22,199,132,.15); color: var(--buy); }
+.dir.SELL { background: rgba(234,57,67,.15); color: var(--sell); }
+.levels { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; font-size: .95rem; }
+.levels .k { color: var(--muted); }
+.levels .v { text-align: right; font-variant-numeric: tabular-nums; }
+.levels .sl { color: var(--sell); }
+.levels .tp { color: var(--buy); }
+.note { margin-top: 12px; color: var(--muted); font-size: .9rem; white-space: pre-wrap; word-break: break-word; }
+.card-foot { margin-top: 12px; display: flex; justify-content: space-between; align-items: center; font-size: .8rem; color: var(--muted); }
+.badge { padding: 2px 8px; border-radius: 6px; font-size: .78rem; font-weight: 600; background: var(--panel-2); }
+.badge.active { color: var(--accent); }
+.badge.pending { color: var(--warn); }
+.badge.tp_hit { color: var(--buy); }
+.badge.sl_hit { color: var(--sell); }
+.badge.closed, .badge.cancelled { color: var(--muted); }
+
+.empty { text-align: center; color: var(--muted); padding: 48px 0; grid-column: 1 / -1; }
+
+/* Forms / admin */
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin: 24px 0; }
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+label { display: block; font-size: .85rem; color: var(--muted); margin-bottom: 4px; }
+input, select, textarea {
+  width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--border);
+  border-radius: 8px; padding: 9px 10px; font: inherit;
+}
+textarea { min-height: 70px; resize: vertical; }
+.btn {
+  background: var(--accent); color: #fff; border: 0; border-radius: 8px;
+  padding: 9px 16px; font: inherit; font-weight: 600; cursor: pointer;
+}
+.btn.secondary { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); }
+.btn.danger { background: var(--sell); }
+.btn.small { padding: 5px 10px; font-size: .85rem; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.error { color: var(--sell); margin-top: 10px; min-height: 1.2em; }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+th, td { padding: 10px 8px; border-bottom: 1px solid var(--border); text-align: left; white-space: nowrap; }
+th { color: var(--muted); font-weight: 500; }
+td select { width: auto; padding: 4px 6px; }
+
+.login-box { max-width: 380px; margin: 80px auto; }
+.hidden { display: none !important; }

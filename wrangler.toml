@@ -1,0 +1,20 @@
+name = "signal-trading"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+# Static frontend (HTML/CSS/JS) served from ./public
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+# Cloudflare D1 database. Replace database_id with the id printed by:
+#   npx wrangler d1 create signal-db
+[[d1_databases]]
+binding = "DB"
+database_name = "signal-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+migrations_dir = "migrations"
+
+# Secrets (set with `npx wrangler secret put <NAME>`, never commit them):
+#   ADMIN_PASSWORD  - password for the admin page
+#   SESSION_SECRET  - long random string used to sign login cookies

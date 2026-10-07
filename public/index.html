@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="km">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Signal Trading</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="container">
+      <a class="logo" href="/">📈 Signal<span>Trading</span></a>
+      <a href="/admin">Admin</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="stats" id="stats">
+      <div class="stat"><div class="label">សញ្ញាសរុប (Total)</div><div class="value" id="s-total">–</div></div>
+      <div class="stat"><div class="label">កំពុងដំណើរការ (Open)</div><div class="value" id="s-open">–</div></div>
+      <div class="stat"><div class="label">ឈ្នះ / ចាញ់ (W/L)</div><div class="value" id="s-wl">–</div></div>
+      <div class="stat"><div class="label">អត្រាឈ្នះ (Win rate)</div><div class="value" id="s-rate">–</div></div>
+      <div class="stat"><div class="label">Pips សរុប</div><div class="value" id="s-pips">–</div></div>
+    </section>
+
+    <nav class="filters" id="filters">
+      <button class="chip active" data-status="">ទាំងអស់</button>
+      <button class="chip" data-status="active">Active</button>
+      <button class="chip" data-status="pending">Pending</button>
+      <button class="chip" data-status="tp_hit">TP Hit ✅</button>
+      <button class="chip" data-status="sl_hit">SL Hit ❌</button>
+      <button class="chip" data-status="closed">Closed</button>
+    </nav>
+
+    <section class="grid" id="signals"></section>
+  </main>
+
+  <script src="/common.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
